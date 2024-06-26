@@ -1,10 +1,12 @@
 import random
 # from telebot import TeleBot
 import telebot
-# from os import getenv
-# TOKEN="6513780036:AAFp7Mc218FTFCVSw-qvwZ9z3zD2PCXZvwY"
-# bot = TeleBot(getenv("TOKEN"))
-bot=telebot.TeleBot("6513780036:AAFp7Mc218FTFCVSw-qvwZ9z3zD2PCXZvwY")
+from os import getenv
+from dotenv import load_dotenv
+load_dotenv()
+
+bot = telebot.TeleBot(getenv("TOKEN"))
+
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, text="Привет, я бот случайных чисел. Укажите диапазон чисел в формате /random_number <min> <max>")
